@@ -26,12 +26,12 @@ namespace LiteDbTest
             sw.Start();
 
             Parallel.For(0, 1000, (i) => {
-                int rndInt = rnd.Next(1, 9999);
                 var db = new LiteDatabase($"{DbPath}{i}.tdb");
 
                 var col = db.GetCollection<TestModel>("todoTestModel");
                 for (int q = 0; q < 1000; q++)
                 {
+                    int rndInt = rnd.Next(1, 9999);
                     string str = col.FindById(rndInt).A;
                 }
 
